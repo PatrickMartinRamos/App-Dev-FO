@@ -97,6 +97,7 @@ class MainPage extends StatelessWidget {
               Navigator.pushNamed(context, '/profile'); // Navigate to profile page
               break;
             case 1:
+            //palitan naten to from going to pokeDopt page it will refresh the homepage or go the uppper screen
               Navigator.pushNamed(context, '/PokeDopt');
               break;
             case 2:

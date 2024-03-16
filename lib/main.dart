@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(), // Set the theme to dark mode
       routes: {
         '/': (context) => const MyHomePage(), // Route for the main page
-        '/profile': (context) => profilePage(), // Route for the profile page
+        '/profile': (context) => const profilePage(), // Route for the profile page
         '/PokeList': (context) => const cartPage(), // Route for the cart page(PokeList)
         '/PokeDopt': (context) => const pokeDopt(), // Route for the PokeDopt page
       },
