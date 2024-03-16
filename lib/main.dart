@@ -66,91 +66,94 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20), // Add space between the text and buttons
-                ElevatedButton(
-                  onPressed: () {
-                    // Add your login functionality here
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const MainPage()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10), // Adjust the radius here
+                Row( // Use Row instead of Column for buttons
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Align buttons evenly
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        // Add your login functionality here
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const MainPage()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10), // Adjust the radius here
+                        ),
+                      ),
+                      child: const Text('Log in'),
                     ),
-                  ),
-                  child: const Text('Log in'),
-                ),
-                const SizedBox(height: 10), // Add space between the buttons
-                ElevatedButton(
-                  onPressed: () {
-                    // Show the sign-up dialog
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return SingleChildScrollView( // Wrap with SingleChildScrollView
-                          child: AlertDialog(
-                            title: const Center(child: Text("Sign Up")),
-                            content: SingleChildScrollView(
-                              child: ListBody(
-                                children: <Widget>[
-                                  TextFormField(
-                                    decoration: const InputDecoration(
-                                      labelText: 'Name',
-                                      border: OutlineInputBorder(),
-                                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        // Show the sign-up dialog
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return SingleChildScrollView( // Wrap with SingleChildScrollView
+                              child: AlertDialog(
+                                title: const Center(child: Text("Sign Up")),
+                                content: SingleChildScrollView(
+                                  child: ListBody(
+                                    children: <Widget>[
+                                      TextFormField(
+                                        decoration: const InputDecoration(
+                                          labelText: 'Name',
+                                          border: OutlineInputBorder(),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      TextFormField(
+                                        decoration: const InputDecoration(
+                                          labelText: 'Password',
+                                          border: OutlineInputBorder(),
+                                        ),
+                                        obscureText: true,
+                                      ),
+                                      const SizedBox(height: 10),
+                                      TextFormField(
+                                        decoration: const InputDecoration(
+                                          labelText: 'Confirm Password',
+                                          border: OutlineInputBorder(),
+                                        ),
+                                        obscureText: true,
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(height: 10),
-                                  TextFormField(
-                                    decoration: const InputDecoration(
-                                      labelText: 'Password',
-                                      border: OutlineInputBorder(),
-                                    ),
-                                    obscureText: true,
+                                ),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('Close'), // Close button
                                   ),
-                                  const SizedBox(height: 10),
-                                  TextFormField(
-                                    decoration: const InputDecoration(
-                                      labelText: 'Confirm Password',
-                                      border: OutlineInputBorder(),
-                                    ),
-                                    obscureText: true,
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      // Perform sign-up functionality here
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('Sign Up', style: TextStyle(color: Colors.orange)),
                                   ),
                                 ],
                               ),
-                            ),
-                            actions: <Widget>[
-                              TextButton(
-                                onPressed: () {
-                                  Navigator.of(context).pop();
-                                },
-                                child: const Text('Close'), // Close button
-                              ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  // Perform sign-up functionality here
-                                  Navigator.of(context).pop();
-                                },
-                                child: const Text('Sign Up', style: TextStyle(color: Colors.orange)),
-                              ),
-                            ],
-                          ),
+                            );
+                          },
                         );
                       },
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10), // Adjust the radius here
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10), // Adjust the radius here
+                        ),
+                      ),
+                      child: const Text('Sign up'),
                     ),
-                  ),
-                  child: const Text('Sign up'),
+                  ],
                 ),
-
-
               ],
             ),
           ),
+
           const SizedBox(height: 10), // Add some space between the gray box and the copyright text
           Center(
             child: Column(
