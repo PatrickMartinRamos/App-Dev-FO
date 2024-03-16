@@ -2,7 +2,6 @@ import 'package:appdevfo/page/pokeListPage.dart';
 import 'package:flutter/material.dart';
 import 'page/mainPage.dart';
 import 'page/profilePage.dart';
-import 'page/pokeDopt.dart';
 import 'page/pokeListPage.dart';
 
 void main() {
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const MyHomePage(), // Route for the main page
         '/profile': (context) => const profilePage(), // Route for the profile page
         '/PokeList': (context) => const pokeListPage(), // Route for the cart page(PokeList)
-        '/PokeHome': (context) => const pokeDopt(), // Route for the PokeDopt page
+        '/PokeHome': (context) => const MainPage(), // Route for the PokeDopt page
       },
     );
   }

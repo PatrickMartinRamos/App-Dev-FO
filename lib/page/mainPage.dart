@@ -79,15 +79,15 @@ class MainPage extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
+            icon: Icon(Icons.account_circle,color: Colors.orange,),
             label: 'Profile',
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/pokedopt.ico')),
+            icon: ImageIcon(AssetImage('assets/pokedopt.ico'),color: Colors.orange),
             label: 'PokeHome',
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/pokepals.ico')),
+            icon: ImageIcon(AssetImage('assets/pokepals.ico'),color: Colors.orange),
             label: 'PokeList',
           ),
         ],

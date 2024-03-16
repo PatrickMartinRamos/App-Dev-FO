@@ -9,12 +9,12 @@ class profilePage extends StatefulWidget {
 
 class ProfilePageState extends State<profilePage> {
   String name = 'Ashe Loche';
-  String nickname = 'Ashie'; // Initial nickname value
-  String gender = 'Male';
-  String status = 'Single';
+  String nickname = ' ';
+  String gender = ' ';
+  String status = ' ';
   String looking = ' ';
-  String motto = 'sample motto here';
-  String bio = 'place bio here';
+  String motto = ' ';
+  String bio = 'Tell the others about your self';
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +77,6 @@ class ProfilePageState extends State<profilePage> {
                   _buildProfileField(label: 'Status', value: status),
                   _buildProfileField(label: 'Looking', value: looking),
                   _buildProfileField(label: 'Motto', value: motto),
-
                   const ListTile(
                     title: Text('Bio'),
                   ),
@@ -105,18 +104,19 @@ class ProfilePageState extends State<profilePage> {
           ],
         ),
       ),
+
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
+            icon: Icon(Icons.account_circle, color: Colors.orange),
             label: 'Profile',
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/pokedopt.ico')),
+            icon: ImageIcon(AssetImage('assets/pokedopt.ico'),color: Colors.orange,),
             label: 'PokeHome',
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/pokepals.ico')),
+            icon: ImageIcon(AssetImage('assets/pokepals.ico'),color: Colors.orange,),
             label: 'PokeList',
           ),
         ],
@@ -161,6 +161,7 @@ class ProfilePageState extends State<profilePage> {
           initialStatus: status,
           initialLooking: looking,
           initialBio: bio,
+          initialMotto: motto,
         ),
       ),
     );
@@ -173,6 +174,7 @@ class ProfilePageState extends State<profilePage> {
         status = updatedProfile['status'];
         looking = updatedProfile['looking'];
         bio = updatedProfile['bio'];
+        motto = updatedProfile['motto'];
         // Update other fields similarly
       });
     }
@@ -186,6 +188,7 @@ class EditProfileScreen extends StatefulWidget {
   final String initialStatus;
   final String initialLooking;
   final String initialBio;
+  final String initialMotto;
 
   const EditProfileScreen({
     Key? key,
@@ -195,6 +198,8 @@ class EditProfileScreen extends StatefulWidget {
     required this.initialStatus,
     required this.initialLooking,
     required this.initialBio,
+    required this.initialMotto,
+
   }) : super(key: key);
 
   @override
@@ -207,6 +212,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
   late TextEditingController _genderController;
   late TextEditingController _statusController;
   late TextEditingController _bioController;
+  late TextEditingController _mottoController;
   late String _lookingValue;
 
   @override
@@ -218,6 +224,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
     _statusController = TextEditingController(text: widget.initialStatus);
     _statusController = TextEditingController(text: widget.initialLooking);
     _bioController = TextEditingController(text: widget.initialBio);
+    _mottoController = TextEditingController(text: widget.initialMotto);
     _lookingValue = 'Yes';
   }
 
@@ -228,6 +235,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
     _genderController.dispose();
     _statusController.dispose();
     _bioController.dispose();
+    _mottoController.dispose();
     super.dispose();
   }
 
@@ -258,6 +266,10 @@ class EditProfileScreenState extends State<EditProfileScreen> {
               TextFormField(
                 controller: _statusController,
                 decoration: const InputDecoration(labelText: 'Status'),
+              ),
+              TextFormField(
+                controller: _mottoController,
+                decoration: const InputDecoration(labelText: 'Motto'),
               ),
           const SizedBox(height: 10),
           // Dropdown box for the "Looking" section
@@ -324,6 +336,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
     final newStatus = _statusController.text;
     final newLooking = _lookingValue.toString();
     final newBio = _bioController.text;
+    final newMotto = _mottoController.text;
     Navigator.pop(context, {
       'name': newName,
       'nickname': newNickname,
@@ -331,6 +344,7 @@ class EditProfileScreenState extends State<EditProfileScreen> {
       'status': newStatus,
       'looking': newLooking,
       'bio': newBio,
+      'motto': newMotto,
     });
   }
 }
