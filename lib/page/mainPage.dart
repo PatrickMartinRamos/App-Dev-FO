@@ -1,5 +1,75 @@
 import 'package:flutter/material.dart';
 
+class PokemonCard extends StatefulWidget {
+  const PokemonCard({Key? key}) : super(key: key);
+
+  @override
+  PokemonCardState createState() => PokemonCardState();
+}
+
+class PokemonCardState extends State<PokemonCard> {
+  bool isLiked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: MediaQuery.of(context).size.width * 0.8,
+      child: Card(
+        child: Stack(
+          children: [
+            Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 7.0), // Add padding to the top
+                  child: Container(
+                    width: 250, // Adjust the width of the image container
+                    height: 250, // Adjust the height of the image container
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0), // Adjust border radius as needed
+                      image: const DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/pokemon/gengar.jpg'),
+                      ),
+                    ),
+                  ),
+                ),
+                const ListTile(
+                  contentPadding: EdgeInsets.symmetric(vertical: 1.0, horizontal: 10.0), // Adjust padding as needed
+                  title: Text('Gengar'),
+                  subtitle: Text(
+                      'To steal the life of its target, it slips into the prey’s shadow and silently waits for an opportunity.'),
+                ),
+              ],
+            ),
+            Positioned(
+              bottom: 8.0,
+              left: 8.0,
+              right: 8.0, // Positioned the button to stretch to the entire width of the card
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end, // Align the button to the right
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      isLiked ? Icons.favorite : Icons.favorite_border,
+                      color: isLiked ? Colors.red : Colors.grey, // Change color based on isLiked state
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        isLiked = !isLiked; // Toggle isLiked state
+                      });
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 class MainPage extends StatelessWidget {
   const MainPage({Key? key}) : super(key: key);
 
@@ -42,17 +112,6 @@ class MainPage extends StatelessWidget {
                       },
                     ),
                   ),
-                  InkWell(
-                    onTap: () {
-                      // Add your filter functionality here
-                    },
-                    child: IconButton(
-                      icon: const Icon(Icons.filter_alt),
-                      onPressed: () {
-                        // Add your filter functionality here
-                      },
-                    ),
-                  ),
                 ],
               ),
               InkWell(
@@ -60,18 +119,25 @@ class MainPage extends StatelessWidget {
                   // Add your notification functionality here
                 },
                 child: IconButton(
-                  icon: const Icon(Icons.notifications),
+                  icon: const Icon(Icons.filter_alt),
                   onPressed: () {
-                    // Add your notification functionality here
+                    // Add your filter functionality here
                   },
                 ),
               ),
             ],
           ),
           const SizedBox(height: 10),
-          const Expanded(
-            child: Center(
-              child: Text('Welcome to PokeDopt!'),
+          Expanded(
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: const [
+                PokemonCard(),
+                PokemonCard(),
+                PokemonCard(),
+                PokemonCard(),
+                PokemonCard(),
+              ],
             ),
           ),
         ],
@@ -79,15 +145,15 @@ class MainPage extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle,color: Colors.orange,),
+            icon: Icon(Icons.account_circle, color: Colors.orange),
             label: 'Profile',
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/pokedopt.ico'),color: Colors.orange),
+            icon: ImageIcon(AssetImage('assets/pokedopt.ico'), color: Colors.orange),
             label: 'PokeHome',
           ),
           BottomNavigationBarItem(
-            icon: ImageIcon(AssetImage('assets/pokepals.ico'),color: Colors.orange),
+            icon: ImageIcon(AssetImage('assets/pokepals.ico'), color: Colors.orange),
             label: 'PokeList',
           ),
         ],
