@@ -1,4 +1,3 @@
-import 'package:appdevfo/page/pokeListPage.dart';
 import 'package:flutter/material.dart';
 import 'page/mainPage.dart';
 import 'page/profilePage.dart';
@@ -9,7 +8,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -85,7 +84,60 @@ class MyHomePage extends StatelessWidget {
                 const SizedBox(height: 10), // Add space between the buttons
                 ElevatedButton(
                   onPressed: () {
-                    // Add your sign-up functionality here
+                    // Show the sign-up dialog
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return SingleChildScrollView( // Wrap with SingleChildScrollView
+                          child: AlertDialog(
+                            title: const Center(child: Text("Sign Up")),
+                            content: SingleChildScrollView(
+                              child: ListBody(
+                                children: <Widget>[
+                                  TextFormField(
+                                    decoration: const InputDecoration(
+                                      labelText: 'Name',
+                                      border: OutlineInputBorder(),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  TextFormField(
+                                    decoration: const InputDecoration(
+                                      labelText: 'Password',
+                                      border: OutlineInputBorder(),
+                                    ),
+                                    obscureText: true,
+                                  ),
+                                  const SizedBox(height: 10),
+                                  TextFormField(
+                                    decoration: const InputDecoration(
+                                      labelText: 'Confirm Password',
+                                      border: OutlineInputBorder(),
+                                    ),
+                                    obscureText: true,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text('Close'), // Close button
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  // Perform sign-up functionality here
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text('Sign Up', style: TextStyle(color: Colors.orange)),
+                              ),
+                            ],
+                          ),
+                        );
+                      },
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -94,6 +146,8 @@ class MyHomePage extends StatelessWidget {
                   ),
                   child: const Text('Sign up'),
                 ),
+
+
               ],
             ),
           ),
