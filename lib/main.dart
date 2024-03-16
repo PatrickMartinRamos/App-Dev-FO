@@ -57,7 +57,7 @@ class MyHomePage extends StatelessWidget {
                   child: Text(
                     "With PokeDopt, starting your Pokemon Journey just requires a couple of clicks, and soon you'll have a forever companion! Not only that, for "
                         "people who just want a normal life and share their moments with their Poke Pals, then use the built-in social media platform to tell the world "
-                        "about the joys between you and your Pokemon",
+                        "about the joys between you and your Pokemon.",
                     textAlign: TextAlign.center, // Center align the text
                     style: TextStyle(
                       fontSize: 12,
