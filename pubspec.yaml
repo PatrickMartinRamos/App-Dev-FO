@@ -64,6 +64,13 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/bannerPikachu.jpg
+    - assets/asheprofile.png
+    - assets/pokedopt.ico
+    - assets/pokepals.ico
+    - assets/pokemon/chandelure.jpg
+    - assets/pokemon/dragonite.jpg
+    - assets/pokemon/gengar.jpg
+    - assets/pokemon/incineroar.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
