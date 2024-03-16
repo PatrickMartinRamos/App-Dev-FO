@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-
-class pokeDopt extends StatelessWidget {
-  const pokeDopt({Key? key});
+class pokeListPage extends StatelessWidget {
+  const pokeListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('pokeDopt Home Page'),
+        title: const Text('PokeList Page'), // Set app bar title to "Main Page"
       ),
       body: const Center(
-        child: Text('Welcome to the pokeDopt Page!'),
+        child: Text('Welcome to the PokeList Page!'),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
@@ -30,16 +29,16 @@ class pokeDopt extends StatelessWidget {
         onTap: (int index) {
           switch (index) {
             case 0:
-            // Handle profile icon tap
-              Navigator.pushNamed(context, '/profile');
+              Navigator.pushNamed(context, '/profile'); // Navigate to profile page
               break;
-            case 1: Navigator.pushNamed(context, '/PokeHome');
-            // Handle pokehome icon tap
+            case 1:
+            //palitan naten to from going to pokeDopt page it will refresh the homepage or go the uppper screen
+              Navigator.pushNamed(context, '/PokeHome');
               break;
             case 2:
-              Navigator.pushNamed(context, '/PokeList');
-            // Handle pokelist icon tap
+              Navigator.pushNamed(context, '/PokeList'); //Navigate to cart page
               break;
+          // You can add cases for other tabs if needed
           }
         },
       ),

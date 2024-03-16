@@ -1,8 +1,9 @@
-import 'package:appdevfo/page/cartPage.dart';
+import 'package:appdevfo/page/pokeListPage.dart';
 import 'package:flutter/material.dart';
 import 'page/mainPage.dart';
 import 'page/profilePage.dart';
 import 'page/pokeDopt.dart';
+import 'page/pokeListPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,8 +21,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MyHomePage(), // Route for the main page
         '/profile': (context) => const profilePage(), // Route for the profile page
-        '/PokeList': (context) => const cartPage(), // Route for the cart page(PokeList)
-        '/PokeDopt': (context) => const pokeDopt(), // Route for the PokeDopt page
+        '/PokeList': (context) => const pokeListPage(), // Route for the cart page(PokeList)
+        '/PokeHome': (context) => const pokeDopt(), // Route for the PokeDopt page
       },
     );
   }

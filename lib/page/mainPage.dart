@@ -84,7 +84,7 @@ class MainPage extends StatelessWidget {
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(AssetImage('assets/pokedopt.ico')),
-            label: 'PokeDopt',
+            label: 'PokeHome',
           ),
           BottomNavigationBarItem(
             icon: ImageIcon(AssetImage('assets/pokepals.ico')),
@@ -98,7 +98,7 @@ class MainPage extends StatelessWidget {
               break;
             case 1:
             //palitan naten to from going to pokeDopt page it will refresh the homepage or go the uppper screen
-              Navigator.pushNamed(context, '/PokeDopt');
+              Navigator.pushNamed(context, '/PokeHome');
               break;
             case 2:
               Navigator.pushNamed(context, '/PokeList'); //Navigate to cart page
