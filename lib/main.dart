@@ -1,22 +1,35 @@
+import 'package:appdevfo/page/cartPage.dart';
 import 'package:flutter/material.dart';
 import 'page/mainPage.dart';
+import 'page/profilePage.dart';
+import 'page/pokeDopt.dart';
+
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'PokeDopt',
       theme: ThemeData.dark(), // Set the theme to dark mode
-      home: MyHomePage(),
+      routes: {
+        '/': (context) => const MyHomePage(), // Route for the main page
+        '/profile': (context) => profilePage(), // Route for the profile page
+        '/PokeList': (context) => const cartPage(), // Route for the cart page(PokeList)
+        '/PokeDopt': (context) => const pokeDopt(), // Route for the PokeDopt page
+      },
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,38 +42,6 @@ class MyHomePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.search),
-                    onPressed: () {
-                      // Add your search functionality here
-                    },
-                  ),
-                  const SizedBox(width: 1),
-                  IconButton(
-                    icon: const Icon(Icons.filter_alt),
-                    onPressed: () {
-                      // Add your filter functionality here
-                    },
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.notifications),
-                    onPressed: () {
-                      // Add your notification functionality here
-                    },
-                  ),
-                ],
-              ),
-            ],
-          ),
           const SizedBox(height: 5), // Add some space between the search bar and the image
           Container(
             color: Colors.grey.shade700, // Set the background color to a grayish shade
@@ -86,36 +67,32 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20), // Add space between the text and buttons
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        // Add your login functionality here
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => MainPage()),
-                        );
-                      },
-                      child: Text('Log in'),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Adjust the radius here
-                        ),
-                      ),
+                ElevatedButton(
+                  onPressed: () {
+                    // Add your login functionality here
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const MainPage()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10), // Adjust the radius here
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        // Add your sign-up functionality here
-                      },
-                      child: Text('Sign up'),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10), // Adjust the radius here
-                        ),
-                      ),
+                  ),
+                  child: const Text('Log in'),
+                ),
+                const SizedBox(height: 10), // Add space between the buttons
+                ElevatedButton(
+                  onPressed: () {
+                    // Add your sign-up functionality here
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10), // Adjust the radius here
                     ),
-                  ],
+                  ),
+                  child: const Text('Sign up'),
                 ),
               ],
             ),
