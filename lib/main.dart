@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'page/mainPage.dart';
 import 'page/profilePage.dart';
-import 'page/pokeListPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,8 +18,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MyHomePage(), // Route for the main page
         '/profile': (context) => const profilePage(), // Route for the profile page
-        '/PokeList': (context) => const pokeListPage(), // Route for the cart page(PokeList)
-        '/PokeHome': (context) => const MainPage(), // Route for the PokeDopt page
+        '/PokeList': (context) => const PokeListPage(likedPokemons: []), // Route for the cart page(PokeList)
+        '/PokeHome': (context) =>  const MainPage(likedPokemons: []), // Route for the PokeDopt page
       },
     );
   }
@@ -74,7 +73,7 @@ class MyHomePage extends StatelessWidget {
                         // Add your login functionality here
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const MainPage()),
+                          MaterialPageRoute(builder: (context) => const MainPage(likedPokemons: [])),
                         );
                       },
                       style: ElevatedButton.styleFrom(
